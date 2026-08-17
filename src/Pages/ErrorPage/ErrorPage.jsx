@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteError, Link, useNavigate } from 'react-router-dom';
+import { useRouteError, useNavigate } from 'react-router-dom';
 
 const ErrorPage = () => {
     const error = useRouteError();
@@ -27,12 +27,12 @@ const ErrorPage = () => {
                     >
                         Go Back
                     </button>
-                    <Link 
-                        to="/" 
+                    <button 
+                        onClick={() => navigate('/')} 
                         className="btn bg-[#23BE0A] hover:bg-[#1fa908] text-white border-none rounded-xl px-6"
                     >
                         Back to Home
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>

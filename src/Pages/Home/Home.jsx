@@ -7,8 +7,9 @@ const Home = () => {
     const data = useLoaderData();
 
     return (
-        <div className="w-full space-y-8 sm:space-y-12">
+        <div>
             <Banner />
+            {/* এখানে কোনো map() থাকবে না, পুরো ডাটা একসাথে Books এ যাবে */}
             <Books data={data} />
         </div>
     );

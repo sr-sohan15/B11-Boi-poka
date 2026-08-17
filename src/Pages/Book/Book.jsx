@@ -17,7 +17,7 @@ const Book = ({ singleBook }) => {
             } else if (i === fullStars + 1 && hasHalfStar) {
                 stars.push(<span key={i} className="text-amber-400 text-sm">½</span>);
             } else {
-                stars.push(<span key={i} className="text-gray-300 text-sm">☆</span>);
+                stars.push(<span key={i} className="opacity-30 text-sm">☆</span>);
             }
         }
         return stars;
@@ -25,16 +25,23 @@ const Book = ({ singleBook }) => {
 
     return (
         <Link to={`/book/${bookId}`}>
-            <div className="card bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 h-full cursor-pointer flex flex-col justify-between">
+            <div className="card bg-base-100 border border-base-300 rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 h-full cursor-pointer flex flex-col justify-between group">
                 <div>
-                    <figure className="bg-[#F3F3F3] py-6 rounded-xl">
-                        <img className="h-[160px] object-contain drop-shadow-sm" src={image} alt={bookName} />
+                    <figure className="bg-base-200 py-6 rounded-xl overflow-hidden">
+                        <img 
+                            className="h-[160px] object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300" 
+                            src={image} 
+                            alt={bookName} 
+                        />
                     </figure>
 
                     {tags && tags.length > 0 && (
                         <div className="flex gap-2 mt-4 flex-wrap">
                             {tags.map((tag, index) => (
-                                <span key={index} className="badge bg-[#23BE0A]/10 text-[#23BE0A] border-none px-3 py-2 font-semibold text-xs rounded-full">
+                                <span 
+                                    key={index} 
+                                    className="badge bg-[#23BE0A]/10 text-[#23BE0A] border-none px-3 py-2 font-semibold text-xs rounded-full"
+                                >
                                     {tag}
                                 </span>
                             ))}
@@ -42,32 +49,32 @@ const Book = ({ singleBook }) => {
                     )}
 
                     <div className="flex items-center justify-between gap-2 mt-3">
-                        <h2 className="card-title text-lg font-bold text-[#131313] line-clamp-1">
+                        <h2 className="card-title text-lg font-bold text-base-content line-clamp-1 group-hover:text-[#23BE0A] transition-colors">
                             {bookName}
                         </h2>
                         {yearOfPublishing >= 1950 && (
-                            <span className="badge bg-[#FF007A] text-white font-bold text-[10px] border-none px-2 py-0.5 rounded-md">
+                            <span className="badge bg-[#FF007A] text-white font-bold text-[10px] border-none px-2 py-0.5 rounded-md shrink-0">
                                 NEW
                             </span>
                         )}
                     </div>
 
-                    <p className="text-gray-500 font-medium text-xs mt-1">By : {author}</p>
+                    <p className="text-base-content/70 font-medium text-xs mt-1">By : {author}</p>
 
                     {review && (
-                        <p className="text-gray-500 text-xs line-clamp-2 leading-relaxed mt-2">
+                        <p className="text-base-content/60 text-xs line-clamp-2 leading-relaxed mt-2">
                             {review}
                         </p>
                     )}
                 </div>
 
                 <div>
-                    <div className="border-t border-dashed border-gray-200 my-3"></div>
+                    <div className="border-t border-dashed border-base-300 my-3"></div>
 
-                    <div className="flex justify-between items-center text-xs font-medium text-gray-700">
+                    <div className="flex justify-between items-center text-xs font-medium text-base-content/80">
                         <span>{category}</span>
                         
-                        <div className="flex items-center gap-1.5 font-semibold text-gray-900">
+                        <div className="flex items-center gap-1.5 font-bold text-base-content">
                             <span>{rating}</span>
                             <div className="flex items-center">
                                 {renderStars(rating)}
